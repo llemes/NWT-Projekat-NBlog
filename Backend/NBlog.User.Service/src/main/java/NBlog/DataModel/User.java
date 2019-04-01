@@ -12,6 +12,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long userId;
+    
     private String username;
     private String password;
     private String email;
@@ -20,6 +21,21 @@ public class User {
     private Date updateTimestamp;
     private int isDeleted;
 
-    protected User() {}
-
+    public User() {}
+    
+    public void setUsername(String username) {
+		this.username = username;
+	}
+    
+    public String getUsername() {
+		return username;
+	}
+    
+    public void setEmail(String email) {
+		this.email = email;
+	}
+    
+    public String getEmail() {
+		return email;
+	}
 }
