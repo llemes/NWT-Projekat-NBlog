@@ -10,6 +10,6 @@ import NBlog.DataModel.User;
 @Repository
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 	
-	User findUser(@Param("name") String name);
+	User findByUsername(@Param("username") String username);
 	User delete(@Param("name") String name);
 }

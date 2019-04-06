@@ -11,23 +11,23 @@ import NBlog.DataModel.User;
 import NBlog.Repository.UserRepository;
 
 @RestController
-@RequestMapping(path="/user")
+// @RequestMapping(path="/user")
 public class UserController {
 	
 	@Autowired
 	private UserRepository userRepository; 
 	
 	@RequestMapping("/add") // Map ONLY GET Requests
-	public @ResponseBody String addNewUser (@RequestParam String name
+	public @ResponseBody String addNewUser(@RequestParam String username
 			, @RequestParam String email) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
 
 		User user = new User();
-		user.setUsername(name);
+		user.setUsername(username);
 		user.setEmail(email);
 		userRepository.save(user);
-		return "Saved";
+		return "Saved new user: " + username;
 	}
 
 	@RequestMapping("/all")
@@ -37,12 +37,12 @@ public class UserController {
 	}
 	
 	@RequestMapping("/find")
-	public @ResponseBody User findUser(@RequestParam String name) {
-		return userRepository.findUser(name);
+	public @ResponseBody User findUserByName(@RequestParam String username) {
+		return userRepository.findByUsername(username);
 	}
 	
 	@RequestMapping("/delete")
-	public @ResponseBody User deleteUser(@RequestParam String name) {
-		return userRepository.delete(name);	
+	public @ResponseBody User deleteUser(@RequestParam String username) {
+		return userRepository.delete(username);	
 	}
 }
