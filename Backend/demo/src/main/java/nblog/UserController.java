@@ -26,15 +26,30 @@ public class UserController {
 		return repository.findAll();
 	}
 
-	@PostMapping("/add")
-	User newUser(@RequestParam String username, @RequestParam String email) {
+	@PostMapping("/user")
+	User addNewUser(@RequestParam String username, @RequestParam String email) {
 		return repository.save(new User(username, email));
+	}
+	
+	@PutMapping("/users/{id}")
+	User editUserById(@RequestParam String newUsername, @RequestParam String newEmail, 
+			@PathVariable Long id) {
+
+		return repository.findById(id)
+				.map(user -> {
+					user.setUsername(newUsername);
+					user.setEmail(newEmail);
+					return repository.save(user);
+				})
+				.orElseGet(() -> {
+					User newUser = new User(newUsername, newEmail);
+					return repository.save(newUser);
+				});
 	}
 
 	// Single item
-
 	@GetMapping("/users/{id}")
-	User one(@PathVariable Long id) {
+	User getUserById(@PathVariable Long id) {
 		
 		try {
 			return repository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
@@ -44,8 +59,8 @@ public class UserController {
 		}	
 	}
 
-	@DeleteMapping("/users/delete/{id}")
-	void deleteUser(@PathVariable Long id) {
+	@DeleteMapping("/users/{id}")
+	void deleteUserById(@PathVariable Long id) {
 		repository.deleteById(id);
 	}
 }
