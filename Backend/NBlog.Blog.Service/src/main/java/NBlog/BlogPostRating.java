@@ -3,16 +3,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class BlogPostRating {
+public class BlogPostRating implements Serializable {
 
     @Id
-    private long blogPostId;
+    public long blogPostId;
     @Id
-    private long userId;
-    private String ratingCode;
+    public long userId;
+    public String ratingCode;
 
     protected BlogPostRating() {}
 }

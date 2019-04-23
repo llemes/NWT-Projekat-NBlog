@@ -11,13 +11,13 @@ public class BlogPost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long blogPostId;
-    private String title;
-    private String content;
-    private String imageContent;
-    private Date creationTimestamp;
-    private Date updateTimestamp;
-    private int isDeleted;
+    public long blogPostId;
+    public String title;
+    public String content;
+    public String imageContent;
+    public Date creationTimestamp;
+    public Date updateTimestamp;
+    public int isDeleted;
 
     protected BlogPost() {}
 }

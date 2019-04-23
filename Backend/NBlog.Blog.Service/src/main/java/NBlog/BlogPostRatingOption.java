@@ -10,8 +10,8 @@ import java.util.Date;
 public class BlogPostRatingOption {
 
     @Id
-    private String ratingCode;
-    private String ratingFullName;
+    public String ratingCode;
+    public String ratingFullName;
 
     protected BlogPostRatingOption() {}
 

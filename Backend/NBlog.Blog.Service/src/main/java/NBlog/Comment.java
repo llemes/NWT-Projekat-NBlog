@@ -11,11 +11,11 @@ public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long commentId;
-    private String content;
-    private Date creationTimestamp;
-    private Date updateTimestamp;
-    private int isDeleted;
+    public long commentId;
+    public String content;
+    public Date creationTimestamp;
+    public Date updateTimestamp;
+    public int isDeleted;
 
     protected Comment() {}
 }

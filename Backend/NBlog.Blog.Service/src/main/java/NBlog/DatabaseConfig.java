@@ -11,12 +11,13 @@ public class DatabaseConfig {
     CommandLineRunner initDatabase(UserRepository repository) {
 
         return args -> {
-            //log.info("Preloading " + repository.save(new User("Bilbo Baggins", "fat@gmail.com")));
-            //log.info("Preloading " + repository.save(new User("Frodo Baggins", "stupid@gmail.com")));
-            //repository.save(new User("Loki Laufeyson", "jebaited@gmail.com"));
-            //repository.save(new User("Carol Danvers", "avenger@gmail.com"));
-            //repository.save(new User("Peter Parker", "homework@gmail.com"));
-            //repository.save(new User("Groot", "iamgroot@gmail.com"));
+            
+        	repository.save(new User("user1", "pass", "neki@email.ba"));
+        	repository.save(new User("user2", "pass", "ohoho@email.ba"));
+        	repository.save(new User("user3", "pass", "jajaj@email.ba"));
+        	repository.save(new User("user4", "pass", "trolol@email.ba"));
+        	repository.save(new User("user5", "pass", "hnj@email.ba"));
+        	
         };
     }
 }
