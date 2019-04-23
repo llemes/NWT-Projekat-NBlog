@@ -19,73 +19,51 @@ import javassist.NotFoundException;
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
-	
+
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@GetMapping(value = "")
 	public List<User> getAll() {
 		return userRepository.findAll();
 	}
-	
+
 	@GetMapping(value = "/{id}")
 	public User getUserById(@PathVariable(value = "id") Long id) throws NotFoundException {
 		return userRepository.findById(id).orElseThrow(() -> new NotFoundException("User with given id not found"));
 	}
-	
+
 	@PostMapping(value = "")
 	public User createUser(@RequestBody User user) {
 		return userRepository.save(user);
 	}
-	
-	@DeleteMapping(value = "/{id}") 
-	public ResponseEntity<?> deleteUser(@PathVariable(value = "id") Long id) {
-		
-		try {
-			
-			User user = userRepository
-					.findById(id)
-					.orElseThrow(() -> new NotFoundException("User with given id not found"));
-			
-			userRepository.delete(user);		
 
-		
-		} catch (NotFoundException e) {
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<?> deleteUser(@PathVariable(value = "id") Long id) throws NotFoundException {
 
-			e.printStackTrace();
-			return ResponseEntity.status(503).build();
+		User user = userRepository.findById(id)
+				.orElseThrow(() -> new NotFoundException("User with given id not found"));
 
-		}
-		
+		userRepository.delete(user);
+
 		return ResponseEntity.ok().build();
 
 	}
-	
+
 	@PutMapping(value = "/{id}")
-	public User updateUser(@PathVariable(value = "id") Long id, @RequestBody User user) {
-		
-		User existingUser = new User();
-		
-		try {
-			
-			existingUser = userRepository
-					.findById(id)
-					.orElseThrow(() -> new NotFoundException("User with given id not found"));
-			
-			existingUser.username = user.username;
-			existingUser.password = user.password;
-			existingUser.email = user.email;
-			existingUser.emailOptOut = user.emailOptOut;
-			existingUser.updateTimestamp = new Date();
-			
-			user = userRepository.save(existingUser);
-			
-		} catch (NotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		return existingUser;
-		
+	public User updateUser(@PathVariable(value = "id") Long id, @RequestBody User user) throws NotFoundException {
+
+		User existingUser = userRepository.findById(id)
+				.orElseThrow(() -> new NotFoundException("User with given id not found"));
+
+		existingUser.username = user.username;
+		existingUser.password = user.password;
+		existingUser.email = user.email;
+		existingUser.emailOptOut = user.emailOptOut;
+		existingUser.updateTimestamp = new Date();
+
+		return userRepository.save(existingUser);
+
 	}
-	
+
 }
