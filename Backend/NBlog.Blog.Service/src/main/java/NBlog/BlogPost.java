@@ -1,4 +1,4 @@
-package NBlog.DataModel;
+package NBlog;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,19 +7,17 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class User {
+public class BlogPost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long userId;
-    private String username;
-    private String password;
-    private String email;
-    private int emailOptOut;
+    private long blogPostId;
+    private String title;
+    private String content;
+    private String imageContent;
     private Date creationTimestamp;
     private Date updateTimestamp;
     private int isDeleted;
 
-    protected User() {}
-
+    protected BlogPost() {}
 }

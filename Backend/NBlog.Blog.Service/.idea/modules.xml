@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NBlog-Blog-Service.iml" filepath="$PROJECT_DIR$/.idea/modules/NBlog-Blog-Service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NBlog-Blog-Service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/NBlog-Blog-Service_main.iml" group="NBlog-Blog-Service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NBlog-Blog-Service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/NBlog-Blog-Service_test.iml" group="NBlog-Blog-Service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/NBlog.Blog.Service.iml" filepath="$PROJECT_DIR$/.idea/modules/NBlog.Blog.Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NBlog.Blog.Service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/NBlog.Blog.Service_main.iml" group="NBlog.Blog.Service" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NBlog.Blog.Service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/NBlog.Blog.Service_test.iml" group="NBlog.Blog.Service" />
     </modules>
   </component>
 </project>

@@ -1,4 +1,5 @@
-package NBlog.DataModel;
+package NBlog;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -6,13 +7,12 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class BlogPostRating {
+public class BlogPostRatingOption {
 
     @Id
-    private long blogPostId;
-    @Id
-    private long userId;
     private String ratingCode;
+    private String ratingFullName;
 
-    protected BlogPostRating() {}
+    protected BlogPostRatingOption() {}
+
 }
