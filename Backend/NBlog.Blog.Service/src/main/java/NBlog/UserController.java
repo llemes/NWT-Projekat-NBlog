@@ -29,7 +29,7 @@ public class UserController {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public User getAuthorById(@PathVariable(value = "id") Long id) throws NotFoundException {
+	public User getUserById(@PathVariable(value = "id") Long id) throws NotFoundException {
 		return userRepository.findById(id).orElseThrow(() -> new NotFoundException("User with given id not found"));
 	}
 	
@@ -81,7 +81,6 @@ public class UserController {
 			user = userRepository.save(existingUser);
 			
 		} catch (NotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
