@@ -14,5 +14,10 @@ public class BlogPostRatingOption {
     public String ratingFullName;
 
     protected BlogPostRatingOption() {}
+    
+    public BlogPostRatingOption(String ratingCode, String ratingFullName) {
+    	this.ratingCode = ratingCode;
+    	this.ratingFullName = ratingFullName;
+    }
 
 }
