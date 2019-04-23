@@ -1,8 +1,13 @@
 package nblog;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.mapping.Array;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,9 +16,18 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class UserController {
+	
+	@Bean
+	public RestTemplate restTemplate() {
+	    return new RestTemplate();
+	}
+	
+	@Autowired
+	private RestTemplate restTemplate;
 	
 	private final UserRepository repository;
 	
@@ -27,8 +41,11 @@ public class UserController {
 	}
 
 	@PostMapping("/user")
-	User addNewUser(@RequestParam String username, @RequestParam String email) {
-		return repository.save(new User(username, email));
+	User addNewUser(@RequestBody User user) {
+		
+		restTemplate.postForObject("http://localhost:9090/user", user, User.class);
+		
+		return repository.save(user);
 	}
 	
 	@PutMapping("/users/{id}")
