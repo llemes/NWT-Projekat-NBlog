@@ -49,17 +49,16 @@ public class UserController {
 	}
 	
 	@PutMapping("/users/{id}")
-	User editUserById(@RequestParam String newUsername, @RequestParam String newEmail, 
+	User editUserById(@RequestBody User newUser, 
 			@PathVariable Long id) {
 
 		return repository.findById(id)
 				.map(user -> {
-					user.setUsername(newUsername);
-					user.setEmail(newEmail);
+					user.setUsername(newUser.getUsername());
+					user.setEmail(newUser.getEmail());
 					return repository.save(user);
 				})
 				.orElseGet(() -> {
-					User newUser = new User(newUsername, newEmail);
 					return repository.save(newUser);
 				});
 	}
