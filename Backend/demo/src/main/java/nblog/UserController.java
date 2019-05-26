@@ -8,6 +8,7 @@ import org.hibernate.mapping.Array;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,7 +44,7 @@ public class UserController {
 	@PostMapping("/user")
 	User addNewUser(@RequestBody User user) {
 		
-		restTemplate.postForObject("http://localhost:9090/user", user, User.class);
+		//restTemplate.postForObject("http://localhost:9090/user", user, User.class);
 		
 		return repository.save(user);
 	}
@@ -74,7 +75,7 @@ public class UserController {
 			throw new UserNotFoundException(id);
 		}	
 	}
-
+	
 	@DeleteMapping("/users/{id}")
 	void deleteUserById(@PathVariable Long id) {
 		repository.deleteById(id);

@@ -17,10 +17,10 @@ public class LoadDatabase {
 		return args -> {
 			//log.info("Preloading " + repository.save(new User("Bilbo Baggins", "fat@gmail.com")));
 			//log.info("Preloading " + repository.save(new User("Frodo Baggins", "stupid@gmail.com")));
-			repository.save(new User("Loki Laufeyson", "jebaited@gmail.com"));
-			repository.save(new User("Carol Danvers", "avenger@gmail.com"));
-			repository.save(new User("Peter Parker", "homework@gmail.com"));
-			repository.save(new User("Groot", "iamgroot@gmail.com"));
+			repository.save(new User("loki69", "jebaited@gmail.com"));
+			repository.save(new User("carolbae", "avenger@gmail.com"));
+			repository.save(new User("cutieparker", "homework@gmail.com"));
+			repository.save(new User("groot", "iamgroot@gmail.com"));
 		};
 	}
 }
